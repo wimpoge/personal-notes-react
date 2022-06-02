@@ -30,16 +30,16 @@ class Navbar extends React.Component {
     }
 }
 
-function Search(props){
-    const title = props.title;
-    return(
-        <div className="note-app__header">
-            <p>{title}</p>
-            <Navbar search={props.onSearch}/>
-        </div>
-    )
-}
+// function Search(props){
+//     const title = props.title;
+//     return(
+//         <div className="note-app__header">
+//             <p>{title}</p>
+//             <Navbar search={props.onSearch}/>
+//         </div>
+//     )
+// }
 
 
 export default Navbar;
-export {Search};
+// export {Search};

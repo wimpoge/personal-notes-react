@@ -1,20 +1,25 @@
 import React from 'react'
 import NoteBody from './NoteBody'
 
-function NoteList({ notes }) {
+
+function NoteList({ notes, onDelete }) {
   return (
     <>
-        {notes.map(note => (
-            <NoteBody 
+        {notes.length > 0 ? (
+        notes.map((note) => (
+          <NoteBody
             key={note.id}
-            id={note.id} 
-            title={note.title} 
-            body={note.body} 
+            id={note.id}
+            title={note.title}
+            body={note.body}
             createdAt={note.createdAt}
-           />
-        ))}
+            onDelete={onDelete}
+          />
+        ))
+      ) : (
+        <p>Tidak ada Catatan</p>
+      )}
     </>
-    
   );
 }
 

@@ -15,21 +15,20 @@ class Layout extends React.Component {
 
         this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
-        this.onSearch = this.onSearch.bind(this);
+        // this.onSearch = this.onSearch.bind(this);
     }
 
-    onSearch(query) {
-      const searchNotes = this.state.notes.filter(
-        (note) =>
-          note.title && note.title.toLowerCase().includes(query.toLowerCase())
-      );
-      this.setState({
-        isFilter: query !== "" ? true : false,
-        filteredNotes: searchNotes,
-      });
-    }
+    // onSearch(query) {
+    //   const searchNotes = this.state.notes.filter(
+    //     (note) =>
+    //       note.title && note.title.toLowerCase().includes(query.toLowerCase())
+    //   );
+    //   this.setState({
+    //     isFilter: query !== "" ? true : false,
+    //     filteredNotes: searchNotes,
+    //   });
+    // }
 
-    
     onDeleteHandler(id) {
         const notes = this.state.notes.filter(note => note.id !== id);
         this.setState({ notes });
@@ -44,6 +43,7 @@ class Layout extends React.Component {
                 id: +new Date(),
                 title,
                 body,
+                createdAt: new Date().toLocaleString(),
               }
             ],
             filteredNotes: [
@@ -64,9 +64,15 @@ class Layout extends React.Component {
     render() {
         return (
             <>
-                <Navbar onSearch={this.onSearch} />
-                <NoteInput  addNote={this.onAddNoteHandler}/>
-                <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler}/>
+                <Navbar
+                 />
+                
+                <NoteInput  
+                addNote={this.onAddNoteHandler}/>
+                
+                <NoteList 
+                notes={this.state.notes} 
+                onDelete={this.onDeleteHandler}/>
             </>
         );
     }
